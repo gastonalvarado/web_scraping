@@ -43,64 +43,39 @@
         </nav>
 
         <!-- Header -->
-        <div class="jumbotron jumbotron-fluid text-center" id="jumbotext" ">
-            <h5 class="display-2 text-light ">Mission to Mars</h5>
-            <p class="lead text-light ">Summary of Mars reasearch and analysis.</p>
-            <hr class="my-4 ">
-            <a class="btn btn-info active btn-lg " id="button " href="# " role="button ">Scrape New Data</a>
-        </div>
+       
 
 
         <!-- Page content -->
-        <div class="card mb-3 " style="max-width: 1200px; ">
-            <div class="row no-gutters ">
-                <div class="col-md-4 ">
-                    <img src="Hotel.jpg " class="card-img " alt="... ">
-                </div>
-                <div class="col-md-8 ">
-                    <div class="card-body ">
-                        <h5 class="card-title ">Project Scope</h5>
-                        <p class="card-text ">What makes a good Hotel in Downtown Cleveland?, do national brands have more and/or higher ratings from their Guests?, what are the things that lead a positive polarity in comments? do they represent what customers value the most?.
-                            Data analytics allows us now to concentrate, clean, and analyze all types of customer reviews in any industry, which becomes a very powerful and useful tool to evaluate, from the Customer perspective, what matters when it comes
-                            to the experience of visiting a Hotel. We are basing our analysis in the reviews collected from Google for the top 20 Hotels in downtown Cleveland, using different data extraction and cleaning, and NLP techniques..</p>
+       
 
-                    </div>
-                </div>
-            </div>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Costa Rica Weather</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Forecast!</a></p>
+
         </div>
 
-        <!-- row 2 -->
+            {% for forecast in forecasts%}
+                    <div class="col-lg-4">
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                  <h4 class="card-title">NASA News</h4>
+                                  <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                  <p class="card-text">{{ forecast }}</p>
+                                </div>
+                              </div>
+                          </div>
+            {% endfor %}
+
     </div>
-    </div>
 
-    <!-- Footer Card Deck -->
-    <div class="row ">
-        <div class="card-deck " style="max-width: 1140px; ">
-            <div class="card ">
-                <img src="histogram.png " class="card-img-top " alt=" ">
-                <div class="card-body ">
-                    <h5 class="card-title ">Sentiment Analysis</h5>
-                    <p class="card-text ">Analysis performed using the top most influential positive-negative words.</p>
-                </div>
-            </div>
+</body>
 
-            <div class="card ">
-                <img src="wordcloud.png " class="card-img-top " alt="... ">
-                <div class="card-body ">
-                    <h5 class="card-title ">Word Cloud</h5>
-                    <p class="card-text ">Developed to present the initial analysis of the outlie words in the data set, providing an easy visual of what is most relevant, and that will be confirmed in the rest of the analysis</p>
-                </div>
-            </div>
-
-            <div class="card text-center ">
-                <div class="card-body ">
-                    <h5 class="card-title ">Proud Sponsor</h5>
-                    <hr>
-                    <p>
-                        <a href="https://rsnetwork.com/ " target="_blank "><img src="rsnlogo.jpeg " class="card-img-top " alt="... "></a>
-                    </p>
-                </div>
-            </div>
+</html>
 
 </body>
 

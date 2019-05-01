@@ -32,11 +32,12 @@ def scrape():
 
     # Run scraped functions  
     mars_mission = mongo.db.mars_mission
-    mars_data = scrape_mars.scrape_mars_news()
-    mars_data = scrape_mars.scrape_mars_image()
-    mars_data = scrape_mars.scrape_mars_weather()
-    mars_data = scrape_mars.scrape_mars_facts()
+    #mars_data = scrape_mars.scrape_mars_news()
+    #mars_data = scrape_mars.scrape_mars_image()
+    #mars_data = scrape_mars.scrape_mars_weather()
+    #mars_data = scrape_mars.scrape_mars_facts()
     mars_data = scrape_mars.scrape_mars_hemisphers()
+    print(mars_data)
     
     mars_mission.update({}, mars_data, upsert=True)
 

@@ -37,12 +37,12 @@
             <hr>
             <div class="col-md-12">
                 <div class="row">
-                    {% for item in hemisphere_image_urls %}
+                    {% for item in mars_mission.hemisphere_image_urls %}
                     <div class="col-md-6">
                         <div class="card text-white bg-dark" style="margin: 30px;">
-                            <img class="card-img-top" src="{{ hemisphere_image_urls.img_url }}" />
+                            <img class="card-img-top" src="{{item.img_url | default('static/images/error.png', true)}}" />
                             <div class="card-body">
-                                <p class="card-text">{{ hemisphere_image_urls.title }}</p>
+                                <p class="card-text">{{item.title}}</p>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,6 @@
                 </div>
             </div>
         </div>
-        <!-- Close main container -->
 
     </div>
 </body>

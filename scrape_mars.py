@@ -192,9 +192,15 @@ def scrape_mars_hemisphers():
     
             # Dictionary entry from MARS NEWS
             mars_mission['hemisphere_image_urls'] = hemisphere_image_urls
+            print(hemisphere_image_urls)
+            print('test')
 
         
         return mars_mission
+    
+if __name__ == "__main__":
+    
+    scrape_mars_hemisphers()
     
     
     

@@ -31,9 +31,14 @@ def home():
 def scrape():
 
     # Run scraped functions  
-    mars_mission = mongo.db.mars_mission.find_one()
+    mars_mission = mongo.db.mars_mission
     mars_data = scrape_mars.scrape_mars_news()
-    #mars_mission.update({}, mars_data, upsert=True)
+    mars_data = scrape_mars.scrape_mars_image()
+    mars_data = scrape_mars.scrape_mars_weather()
+    mars_data = scrape_mars.scrape_mars_facts()
+    mars_data = scrape_mars.scrape_mars_hemisphers()
+    
+    mars_mission.update({}, mars_data, upsert=True)
 
     # Redirect back to home page
     return redirect("/", code=302)

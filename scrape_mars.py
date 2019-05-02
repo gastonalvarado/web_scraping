@@ -125,15 +125,23 @@ def scrape_mars_facts():
         # Parse HTML with Beautiful Soup
         soup = BeautifulSoup(facts, 'lxml')
 
-       # Use Panda's `read_html` to parse the url
-        tables = pd.read_html(mars_facts)
-        df = tables[0]
+        # Use Panda's `read_html` to parse the url
+        mars_facts = pd.read_html(mars_facts)
 
-        #Retrieve the values from the website's table
-        html_table = df.to_html(header=False, index=False) 
-     
-        # Dictionary entry from MARS NEWS
-        mars_mission['html_table'] = html_table
+        # Find the mars facts DataFrame in the list of DataFrames as assign it to `mars_df`
+        mars_df = mars_facts[0]
+
+        # Assign the columns `['Description', 'Value']`
+        mars_df.columns = ['Description','Value']
+
+        # Set the index to the `Description` column without row indexing
+        mars_df.set_index('Description', inplace=True)
+
+        # Save html code to folder Assets
+        data = mars_df.to_html()
+
+        # Dictionary entry from MARS FACTS
+        mars_mission['mars_facts'] = data
 
         
         return mars_mission
@@ -146,14 +154,14 @@ def scrape_mars_hemisphers():
         browser = init_browser()
         
          # Visit Nasa news url through splinter module
-        hemispheres_url = 'https://astrogeology.usgs.gov'
+        hemispheres_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
         browser.visit(hemispheres_url)
 
         # HTML Object 
-        hemispheres = browser.html
+        html_hemispheres = browser.html
 
         # Parse HTML with Beautiful Soup
-        soup = BeautifulSoup(hemispheres, 'lxml')
+        soup = BeautifulSoup(html_hemispheres, 'lxml')
  
         # Retreive all items that contain mars hemispheres information
         items = soup.find_all('div', class_='item')
@@ -162,7 +170,7 @@ def scrape_mars_hemisphers():
         hemisphere_image_urls = []
 
         # Store the main_ul 
-        #hemispheres_main_url = 'https://astrogeology.usgs.gov'
+        hemispheres_main_url = 'https://astrogeology.usgs.gov'
 
         # Loop through the items previously stored
         for i in items: 
@@ -193,7 +201,6 @@ def scrape_mars_hemisphers():
             # Dictionary entry from MARS NEWS
             mars_mission['hemisphere_image_urls'] = hemisphere_image_urls
             print(hemisphere_image_urls)
-            print('test')
 
         
         return mars_mission
